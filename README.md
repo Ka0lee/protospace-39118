@@ -2,14 +2,14 @@
 
 ## users テーブル
 
-| Column             | Type   | Options                |
-| ------------------ | ------ | ---------------------- |
-| email              | string | null: false ユニーク制約|
-| encrypted_password | string | null: false            |
-| name               | string | null: false            |
-| profile            | text   | null: false            |
-| occupation         | text   | null: false            |
-| position           | text   | null: false            |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| email              | string | null: false, unique: true|
+| encrypted_password | string | null: false              |
+| name               | string | null: false              |
+| profile            | text   | null: false              |
+| occupation         | text   | null: false              |
+| position           | text   | null: false              |
 
 
 
@@ -39,7 +39,7 @@
 | Column    | Type         | Options                        |
 | --------- | ------------ | ------------------------------ |
 | content   | text         | null: false                    |
-| prottype  | references   | null: false, foreign_key: true |
+| prototype  | references   | null: false, foreign_key: true |
 | user      | references   | null: false, foreign_key: true |
 
 
