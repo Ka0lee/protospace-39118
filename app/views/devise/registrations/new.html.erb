@@ -5,26 +5,25 @@
 
         <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。%>
         <%# 「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
-        <%= form_with model: @user, url: new_user_registration_path, local: true do |f| %>
-
+        <%= form_with model: @user, url: user_session_path, method: :post,local: true do |f| %>
+       
+        <div class="field">
+          <%= f.label :user_name, "ユーザー名" %><br />
+          <%= f.text_field :user_name, id:"user_name" %>
+        </div>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="field">
-          <%= f.label :password, "パスワード（6文字以上）" %><br />
-          <%= f.password_field :password, id:"user_password", autocomplete: "new-password" ,maxlength: "6"%>
+          <%= f.label :encrypted_password, "パスワード（6文字以上）" %><br />
+          <%= f.password_field :encrypted_password, id:"user_password", autocomplete: "new-password" ,maxlength: "6" %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation, "パスワード再入力" %><br />
-          <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :user_name, "ユーザー名" %><br />
-          <%= f.text_field :user_name, id:"user_name" %>
+          <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password",maxlength: "6" %>
         </div>
 
         <div class="field">
