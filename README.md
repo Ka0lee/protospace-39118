@@ -6,12 +6,17 @@
 | ------------------ | ------ | ------------------------ |
 | email              | string | null: false, unique: true|
 | encrypted_password | string | null: false              |
-| name               | string | null: false              |
+| user_name          | string | null: false              |
 | profile            | text   | null: false              |
 | occupation         | text   | null: false              |
 | position           | text   | null: false              |
 
-
+      t.string :email,              null: false, unique: true
+      t.string :encrypted_password, null: false
+      t.string :name,               null: false
+      t.text :profile,              null: false
+      t.text :occupation,           null: false
+      t.text :position,             null: false
 
 ### Association
 
@@ -39,7 +44,7 @@
 | Column    | Type         | Options                        |
 | --------- | ------------ | ------------------------------ |
 | content   | text         | null: false                    |
-| prototype  | references   | null: false, foreign_key: true |
+| prototype | references   | null: false, foreign_key: true |
 | user      | references   | null: false, foreign_key: true |
 
 
