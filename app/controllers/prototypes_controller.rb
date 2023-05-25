@@ -14,7 +14,7 @@ class PrototypesController < ApplicationController
 
     if @user.save
       # 保存成功時の処理
-      redirect_to :index
+      redirect_to action: :index
     else
        #保存失敗時の処理
       render :new
@@ -24,13 +24,8 @@ class PrototypesController < ApplicationController
   def show
     
   end
-
   
   private
-
-  def user_params
-    params.require(:user).permit(:user_name, :email, :password,:encrypted_password,:password_confirmation, :user_profile, :user_occupation, :user_position)
-  end
 
   def move_to_index
     unless user_signed_in?

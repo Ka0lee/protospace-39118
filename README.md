@@ -11,13 +11,6 @@
 | occupation         | text   | null: false              |
 | position           | text   | null: false              |
 
-      t.string :email,              null: false, unique: true
-      t.string :encrypted_password, null: false
-      t.string :name,               null: false
-      t.text :profile,              null: false
-      t.text :occupation,           null: false
-      t.text :position,             null: false
-
 ### Association
 
 - has_many :prototypes
