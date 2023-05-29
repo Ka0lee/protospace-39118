@@ -3,29 +3,36 @@ class PrototypesController < ApplicationController
 
 
   def index
+    @prototypes=Prototype.all
   end
 
   def new
     @user = User.new
+    @prototype = Prototype.new
   end
 
   def create
-    User.create(user_params)
+    @prototype = current_user.prototypes.build(prototype_params)
 
-    if @user.save
-      # 保存成功時の処理
-      redirect_to action: :index
+    if @prototype.save
+ 
+      redirect_to root_path  # 保存成功時の処理
     else
-       #保存失敗時の処理
-      render :new
+      render :new #保存失敗時の処理
     end
   end
 
-  def show
-    
+  def destroy
+    @Prototype.find(params[:id])
+    @prototype.destroy
+    redirect_to prototypes_path
   end
   
   private
+
+  def prototype_params
+    params.require(:prototype).permit(:title, :catch_copy, :concept, :image,).merge(user_id: current_user.id)
+  end
 
   def move_to_index
     unless user_signed_in?
