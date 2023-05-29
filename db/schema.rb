@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_25_081228) do
+ActiveRecord::Schema.define(version: 2023_05_27_164404) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 2023_05_25_081228) do
   create_table "prototypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "catch_copy", null: false
-    t.text "text", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "concept"
     t.index ["user_id"], name: "index_prototypes_on_user_id"
   end
 
