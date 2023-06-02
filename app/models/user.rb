@@ -11,5 +11,6 @@ class User < ApplicationRecord
          validates :user_position, presence: true
         
         has_many :prototype
+        has_many :comments
           
   end
