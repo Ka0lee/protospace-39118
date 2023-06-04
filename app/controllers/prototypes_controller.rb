@@ -1,9 +1,9 @@
 class PrototypesController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-
-
+  
   def index
-    @prototypes=Prototype.includes(:user)
+    @prototype = Prototype.new
+    @prototypes = Prototype.includes(:user)
   end
 
   def new
@@ -11,7 +11,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = current_user.prototype.build(prototype_params)
+    @prototype = current_user.prototype.create(prototype_params)
 
     if @prototype.save
       redirect_to root_path  # 保存成功時の処理
