@@ -7,9 +7,11 @@ class User < ApplicationRecord
          validates :user_profile, presence: true
          validates :user_name, presence: true
          validates :user_occupation, presence: true
-         validates :password_confirmation, presence: true
+         validates :password_confirmation, presence: true, length: { maximum: 6 }
          validates :user_position, presence: true
-        
-        has_many :prototype
+
+
+        has_many :prototypes
+        has_many :comments
           
   end

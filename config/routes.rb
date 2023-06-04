@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
- root to: 'prototypes#index'
- resources :prototypes
+  root to: 'prototypes#index'
 
+  resources :prototypes ,only:[:index,:new,:create,:show,:edit,:destroy]do
+    resources :comments, only: :create
+  end
+  resources :users, only: :show
 
- resources :user_sign_up, only: [:new, :create], path: 'sign_up'
-
+  resources :user_sign_up, only: [:new, :create], path: 'sign_up'
 end
