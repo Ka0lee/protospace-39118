@@ -12,7 +12,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = current_user.prototype.build(prototype_params)
+    @prototype = Prototype.new(prototype_params)
 
     if @prototype.save
       redirect_to root_path  # 保存成功時の処理
@@ -23,7 +23,7 @@ class PrototypesController < ApplicationController
 
 def show
    @comment = Comment.new
-   @comments = @prototype.comments.includes(:user)
+   @comments = @prototype.comments
 
 end
 
@@ -33,15 +33,18 @@ end
 
 def update
   if @prototype.update(prototype_params)
-    redirect_to root_path
+    redirect_to prototype_path(@prototype)
   else
     render :edit
   end
 end
 
 def destroy
-  @prototype.destroy
-  redirect_to prototypes_path
+  if @prototype.destroy
+    redirect_to root_path
+  else
+    redirect_to root_path
+  end
 end
   
 
