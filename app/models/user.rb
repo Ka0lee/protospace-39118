@@ -10,7 +10,7 @@ class User < ApplicationRecord
          validates :password_confirmation, presence: true
          validates :user_position, presence: true
         
-        has_many :prototype
+        has_many :prototypes
         has_many :comments
           
   end

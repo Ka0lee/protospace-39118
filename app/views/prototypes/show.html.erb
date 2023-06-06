@@ -4,7 +4,7 @@
       <p class="prototype__hedding">
         <%= @prototype.title%>
       </p>
-      <%= link_to "#{current_user.user_name}さん", user_path(current_user.id), class: :prototype__user %>
+      <%= link_to "#{@prototype.user.user_name}さん", user_path(@prototype.user.id), class: :prototype__user %>
 
       <% if user_signed_in? && current_user.id == @prototype.user_id %>
         <div class="prototype__manage">
@@ -32,7 +32,7 @@
       </div>
       <div class="prototype__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
-        <% if user_signed_in? && current_user.id == @prototype.user_id %>
+        <% if user_signed_in? %>
           <%= form_with model: [@prototype, @comment], local: true do |f|%>
             <div class="field">
               <%= f.label 'comment_content', "コメント" %><br />
