@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prototypes ,only:[:index,:new,:create,:show,:edit,:destroy]do
     resources :comments, only: :create
   end
-  resources :users, only: :show
+  resources :users, only: [:show,:index]
 
   resources :user_sign_up, only: [:new, :create], path: 'sign_up'
 end
