@@ -19,9 +19,7 @@
 
           <div class="field">
           <%= f.label :password, "パスワード（6文字以上）" %><br />
-          <% if @minimum_password_length %>
-            (<%= @minimum_password_length %> characters minimum)
-          <% end %><br />
+
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
 
@@ -49,7 +47,7 @@
           <%= f.submit "新規登録", class: :form__btn  %>
         </div>
       <% end %>
-     <% end %>
+
     </div>
   </div>
 </div>
