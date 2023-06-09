@@ -2,11 +2,7 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-      <% if user_signed_in? %>
         <%= link_to "#{@user_name}さんの情報", user_path(@user.id), class: :greeting__link%>
-        <% else %>
-         <%= link_to "#{@user_name}さんの情報", new_user_session_path, class: :greeting__link%> 
-       <% end %>
       </h2>
       <table class="table">
         <tbody>
