@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
-  before_action :authenticate_user!,except:[:index,:show,:new]
+  before_action :authenticate_user!,except:[:index,:show]
   before_action :set_prototype,only:[:show,:edit,:update,:destroy]
-  before_action :contributor_confirmation, only: [:edit, :update,:destroy]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
     @prototypes=Prototype.includes(:user)
@@ -60,7 +60,7 @@ end
 
 
     def contributor_confirmation
-      redirect_to root_path unless @prototype.user == current_user
+      redirect_to new_user_session_path unless @prototype.user == current_user
     end
    
   
